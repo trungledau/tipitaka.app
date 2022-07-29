@@ -38,5 +38,14 @@
     "sqlite3": "^4.0.7",
     "wunsch": "^1.0.2",
     "xml2js": "^0.4.22"
-  }
+  },
+  "main": "tipitaka-app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trungledau/tipitaka.app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trungledau/tipitaka.app/issues"
+  },
+  "homepage": "https://github.com/trungledau/tipitaka.app#readme"
 }

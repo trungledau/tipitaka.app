@@ -31,4 +31,5 @@ const TipitakaQueryType = Object.freeze({
     TOKEN: 'token', // for future
 });
 
-module.exports = { FTSQuery, DictionaryQuery, isAndroid, TipitakaQueryType };
+export { FTSQuery, DictionaryQuery, isAndroid, TipitakaQueryType };
+//module.exports = { FTSQuery, DictionaryQuery, isAndroid, TipitakaQueryType };

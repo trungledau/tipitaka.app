@@ -19,6 +19,22 @@ class DictionaryDb extends SqliteDB {
         if (exactMatches.length) {
             return exactMatches;
         }
+
+        //if dictionary is dpd
+        if ('en-dpd' === this.dictName) {
+            const inflection = await this.loadOne('SELECT headwords FROM inflection WHERE word LIKE ?', [word]);
+            if (inflection.length) {
+                let words_query = inflection[0]['headwords'].split(',').join('" OR word LIKE "');
+                words_query = '"' + words_query + '"';
+                console.log('[search]: '+words_query);
+                const exactMatches = await this.loadAll('SELECT rowid, word, meaning FROM dictionary WHERE word LIKE ' + words_query);
+                console.log(exactMatches);
+                if (exactMatches.length) {
+                    return exactMatches;
+                }
+            }
+        }
+
         const stripEnd = word.replace(/[\u0DCA-\u0DDF\u0D82\u0D83]$/g, '');
         return await this.loadAll('SELECT rowid, word, meaning FROM dictionary WHERE word LIKE ? LIMIT 100', [stripEnd])
     }

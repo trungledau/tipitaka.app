@@ -4,7 +4,7 @@
  * sqlite will run in either in node or in android - isAndroid flag and the imports have to be set manually
  */
 
-const isAndroid = require('./constants.js').isAndroid;
+const isAndroid = require('./constants1.js').isAndroid;
 if (isAndroid) {
     const dbVersions = { // updated dbs need to be marked here for update in android side
         'my-23-vol': 1,
@@ -76,6 +76,7 @@ class SqliteDB {
         });
     }
     async allAsync(sql, params) {
+        console.log('[query]: '+sql);
         return new Promise((resolve, reject) => {
             this.db.all(sql, params, (err, row) => {
                 if (err) {

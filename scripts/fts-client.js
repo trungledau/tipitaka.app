@@ -9,8 +9,8 @@ import { UT, PT, appSettings } from './settings.js';
 import { TextProcessor } from './pali-script.mjs';
 import { PitakaTree } from "./pitaka-tree.js";
 import { titleStorage, SearchFilter, TSE, fileNameFilter, SearchPane } from "./search-common.js";
-
-const FTSQuery = require('../misc/server/constants.js').FTSQuery;
+import { FTSQuery } from '../misc/server/constants.js';
+//const FTSQuery = require('../misc/server/constants.js').FTSQuery;
 
 export class FTSClient extends SearchPane {
     constructor() {
@@ -103,7 +103,7 @@ export class FTSClient extends SearchPane {
 
         const query = {type: 'fts', terms: this.prevTermsSinh, params: this.getQueryParams() };
         const ftsQ = new FTSQuery(query);
-        console.log(`sending query with terms ${query.terms} and params ${JSON.stringify(query.params)}`);
+        console.log(`fts: sending query with terms ${query.terms} and params ${JSON.stringify(query.params)}`);
         this.setBusySearching(true); // visual indication of search running
         const response = await ftsQ.runQuery();
         this.setBusySearching(false); // clear visual indication

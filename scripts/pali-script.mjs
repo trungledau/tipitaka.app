@@ -200,7 +200,7 @@ function beautify_mymr(text, script, rendType = '') { // new unicode 5.1 spec ht
     // following code for tall aa is from https://www.facebook.com/pndaza.mlm
     text = text.replace(/([ခဂငဒပဝ]ေ?)\u102c/g, "$1\u102b"); // aa to tall aa
     text = text.replace(/(က္ခ|န္ဒ|ပ္ပ|မ္ပ)(ေ?)\u102b/g, "$1$2\u102c"); // restore back tall aa to aa for some pattern
-    return text.replace(/(ဒ္ဓ|ဒွ)(ေ?)\u102c/g, "$1\u102b");
+    return text.replace(/(ဒ္ဓ|ဒွ)(ေ?)\u102c/g, "$1$2\u102b");
 }
 function un_beautify_mymr(text) {  // reverse of beautify above
     text = text.replace(/\u102B/g, 'ာ');
@@ -492,6 +492,18 @@ export {TextProcessor, Script, paliScriptInfo, getScriptForCode};
 
 // for node
 //module.exports = {TextProcessor: TextProcessor, Script: Script};
+
+/**
+ * how to use this library
+ * first step - convert from source script to sinhala
+ * const sinhText = TextProcessor.convertFrom(romanText, Script.RO) // convert from one specific script to sinhala
+ * const sinhText = TextProcessor.convertFromMixed(mixedPaliText) // convert from any script to Sinhala
+ * second step - convert to your destination script from sinhala
+ * const finalText = TextProcessor.convert(sinhText, Script.MY)
+ */
+
+
+
 /*
 let testDev = '॥ नमो तस्स भगवतो अरहतो सम्मासम्बुद्धस्स॥ දක්ඛිණා';
 let testMaps = 'akappiyapathavīsaṅkhyā';

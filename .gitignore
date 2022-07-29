@@ -3,3 +3,4 @@
 dev
 node_modules
 dist
+static/dicts/en-dpd.db

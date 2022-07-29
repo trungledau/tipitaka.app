@@ -4,14 +4,15 @@ import { TextProcessor } from './pali-script.mjs';
 import { Language, appSettings, UT, PT } from './settings.js';
 import { JHoverDialog } from './util.js';
 import { SearchPane } from './search-common.js';
-
-const DictionaryQuery = require('../misc/server/constants.js').DictionaryQuery;
+import { DictionaryQuery } from '../misc/server/constants.js';
+//const DictionaryQuery = require('../misc/server/constants.js').DictionaryQuery;
 
 /** change the version when a new dict is available so the old one will be deleted and the new one loaded */
 const dictionaryList = new Map([
     ['en-buddhadatta', [Language.EN, 'Buddhadatta Concise', {s: 'BU', v: 2, o: 'Projector', n: 20970, g: true}]],
     ['en-nyanatiloka', [Language.EN, 'Nyanatiloka Buddhist', {s: 'ND', v: 1, d: 'Buddhist Dictionary by Ven Nyanatiloka', o: 'pced stardict', g: true}]],
     ['en-pts', [Language.EN, 'PTS', {s: 'PS', v: 1, d: 'Pali Text Society Dictionary', o: 'dpr', g: true}]],
+    ['en-dpd', [Language.EN, 'DPD', {s: 'DPD', v: 1, d: 'Digital Pali Dictionary', o: 'dpr', g: true}]],
     ['en-dppn', [Language.EN, 'Proper Names', {s: 'PN', v: 1, d: 'Pali Proper Names by G P Malalasekera', o: 'dpr', g: true}]],
     ['en-vri', [Language.EN, 'VRI English', {s: 'VR', v: 2, o: 'cst windows software', g: 'English', n: 13508}]],
     ['en-critical', [Language.EN, 'Critical PD', {s: 'CR', v: 1, o: 'extracted from https://cpd.uni-koeln.de/', n: 29669, g: true}]],
